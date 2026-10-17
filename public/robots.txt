@@ -1,0 +1,9 @@
+# robots.txt for https://samirk.site/
+User-agent: *
+Allow: /
+
+# Disallow build or private artifacts if any
+Disallow: /dist/
+
+# XML Sitemap
+Sitemap: https://samirk.site/sitemap.xml

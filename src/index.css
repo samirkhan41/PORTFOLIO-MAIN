@@ -1,0 +1,697 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #070504;
+  --color-panel: #0d0908;
+  --color-neon: #ffb035;
+  --color-orange: #ff5c35;
+  --color-amber: #ffb035;
+  --color-line: #382019;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+body {
+  margin: 0;
+  background: #070504;
+  color: #f4f5f0;
+  font-family: "Space Grotesk", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #ff5c35;
+  color: #070504;
+}
+
+/* ==========================================================================
+   Global Dotted Border Theme (Neo-Brutalist Cyberpunk)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  border-style: dotted;
+}
+
+[class*="border"] {
+  border-style: dotted !important;
+}
+
+.border-dotted,
+[class*="border-dotted"] {
+  border-style: dotted !important;
+}
+
+.border-none,
+.border-0,
+[class*="border-0"],
+[class*="border-none"] {
+  border-style: none !important;
+  border-width: 0 !important;
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   Terminal Interactive Line Items (Dotted Border on Hover - Butter Smooth)
+   ========================================================================== */
+.terminal-line-item {
+  position: relative;
+  border-width: 1px;
+  border-style: dotted !important;
+  border-color: transparent;
+  padding: 4px 8px;
+  margin-left: -4px;
+  margin-right: -4px;
+  border-radius: 0;
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  will-change: transform, border-color, background-color;
+}
+
+.terminal-line-item:hover {
+  border-color: #ffb035 !important;
+  border-style: dotted !important;
+  background-color: rgba(255, 176, 53, 0.12) !important;
+  box-shadow: 0 0 14px rgba(255, 176, 53, 0.22) !important;
+  transform: translateX(4px);
+}
+
+.terminal-line-item:hover .term-label {
+  color: #ffd166 !important;
+  text-shadow: 0 0 8px rgba(255, 209, 102, 0.4);
+}
+
+.terminal-line-item:hover .term-val {
+  color: #ffffff !important;
+}
+
+.terminal-line-item:hover .term-dot {
+  opacity: 1 !important;
+}
+
+/* ==========================================================================
+   Neo-Brutalist Custom Scrollbar
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070504;
+  border-left: 1px solid #382019;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #382019;
+  border-radius: 0;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffb035;
+}
+
+/* ==========================================================================
+   Butter-Smooth Motion System (GPU-accelerated, transform & opacity only)
+   ========================================================================== */
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-slide-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-slide-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger Delays */
+.delay-75 { transition-delay: 75ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-225 { transition-delay: 225ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-375 { transition-delay: 375ms; }
+.delay-450 { transition-delay: 450ms; }
+.delay-525 { transition-delay: 525ms; }
+.delay-600 { transition-delay: 600ms; }
+
+/* ==========================================================================
+   Keyframe Animations
+   ========================================================================== */
+@keyframes neon-pulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes status-beacon {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 176, 53, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(255, 176, 53, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 176, 53, 0);
+  }
+}
+
+@keyframes terminal-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+@keyframes grid-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 4s ease-in-out infinite;
+}
+
+.animate-status-beacon {
+  animation: status-beacon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-terminal-blink {
+  animation: terminal-blink 1s steps(2, start) infinite;
+}
+
+.animate-dash-flow {
+  animation: dash-flow 25s linear infinite;
+}
+
+@keyframes navbar-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-navbar-marquee {
+  display: flex;
+  width: max-content;
+  animation: navbar-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-navbar-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   Cyber Background Dynamic Animations (Moon, Lights, CRT, Drift)
+   ========================================================================== */
+@keyframes moon-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1.5deg);
+  }
+}
+
+.animate-moon-float {
+  animation: moon-float 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-cloud-drift {
+  animation: cloud-drift 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes beacon-pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+    box-shadow: 0 0 16px 2px #ff3300;
+  }
+}
+
+.animate-beacon-pulse {
+  animation: beacon-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes window-blink {
+  0%, 15%, 85%, 100% {
+    opacity: 0.9;
+  }
+  20%, 35% {
+    opacity: 0.15;
+  }
+  40%, 70% {
+    opacity: 0.85;
+  }
+  75%, 80% {
+    opacity: 0.25;
+  }
+}
+
+.animate-window-blink {
+  animation: window-blink 4.2s ease-in-out infinite;
+}
+
+@keyframes led-flicker {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  30%, 70% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+
+.animate-led-flicker {
+  animation: led-flicker 1.2s steps(2, start) infinite;
+}
+
+/* ==========================================================================
+   Butter-Smooth Transparent Cutout Soft Cyber Aura & Feet Contact Shadow
+   ========================================================================== */
+.samir-cutout-container {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: none !important;
+  background: transparent !important;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Base Clean Transparent Image */
+.samir-cutout-base {
+  max-height: 570px;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.75));
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Refined Soft Cyber Aura Layer (Toned Down, Silk Smooth) */
+.samir-cutout-aura {
+  position: absolute;
+  bottom: 0;
+  max-height: 570px;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom;
+  pointer-events: none;
+  opacity: 0;
+  filter: 
+    drop-shadow(0 0 4px rgba(255, 209, 102, 0.45))
+    drop-shadow(0 0 12px rgba(255, 176, 53, 0.4))
+    drop-shadow(0 0 24px rgba(255, 92, 53, 0.25));
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+/* Warm Ambient Flame Halo behind Cutout (Soft, Subtle) */
+.samir-ambient-halo {
+  position: absolute;
+  bottom: 80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 176, 53, 0.15) 0%, rgba(255, 92, 53, 0.06) 50%, transparent 70%);
+  filter: blur(35px);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.55s cubic-bezier(0.25, 1, 0.5, 1), transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+/* Butter-Smooth Hover and Active Transitions */
+.samir-cutout-container:hover .samir-cutout-base,
+.samir-cutout-container.aura-active .samir-cutout-base {
+  transform: scale(1.015);
+}
+
+.samir-cutout-container:hover .samir-cutout-aura,
+.samir-cutout-container.aura-active .samir-cutout-aura {
+  opacity: 1;
+  transform: scale(1.015);
+}
+
+.samir-cutout-container:hover .samir-ambient-halo,
+.samir-cutout-container.aura-active .samir-ambient-halo {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+   Realistic Feet Contact & Ground Plane Shadow for Samir Cutout
+   ========================================================================== */
+.samir-feet-shadow-container {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 28px;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Deep dark contact shadow directly under shoe soles */
+.samir-contact-shadow {
+  position: absolute;
+  width: 190px;
+  height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 45%, transparent 75%);
+  filter: blur(3px);
+  transform: translateY(1px);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Soft diffused ambient ground occlusion shadow */
+.samir-ground-shadow {
+  position: absolute;
+  width: 250px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, rgba(12, 8, 6, 0.45) 50%, transparent 75%);
+  filter: blur(8px);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Subtle floor warm reflection when aura awakens */
+.samir-ground-glow {
+  position: absolute;
+  width: 210px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 176, 53, 0.2) 0%, rgba(255, 92, 53, 0.08) 50%, transparent 75%);
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.samir-cutout-container:hover .samir-ground-glow,
+.samir-cutout-container.aura-active .samir-ground-glow {
+  opacity: 1;
+}
+
+.samir-cutout-container:hover .samir-contact-shadow,
+.samir-cutout-container.aura-active .samir-contact-shadow {
+  transform: translateY(1px) scale(1.02);
+}
+
+
+/* ==========================================================================
+   Clean Transparent Workstation Cutout (About Section Neo-Brutalist - No Hover Effect)
+   ========================================================================== */
+.workstation-cutout-container {
+  position: relative;
+  background: transparent !important;
+  border: none !important;
+  user-select: none;
+}
+
+.workstation-cutout {
+  background: transparent !important;
+  border: none !important;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.85));
+}
+
+
+
+@keyframes ember-rise {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-80px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.animate-ember-rise {
+  animation: ember-rise 2.4s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes flash-burst {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-flash-burst {
+  animation: flash-burst 0.45s ease-out forwards;
+}
+
+.animate-led-flicker {
+  animation: led-flicker 1.2s steps(2, start) infinite;
+}
+
+@keyframes scanline-sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+.animate-scanline-sweep {
+  animation: scanline-sweep 7s linear infinite;
+  will-change: transform;
+}
+
+.bg-grid-cyber {
+  background-image: 
+    linear-gradient(to right, rgba(56, 32, 25, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 32, 25, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ==========================================================================
+   Neo-Brutalist Interactive Elements & Hover States
+   ========================================================================== */
+.neo-btn-primary {
+  position: relative;
+  background-color: #ffb035;
+  color: #070504;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+.neo-btn-primary:hover {
+  transform: translate(-2px, -2px);
+  background-color: #ffc466;
+  box-shadow: 3px 3px 0px 0px #ff5c35;
+}
+
+.neo-btn-primary:active {
+  transform: translate(0, 0);
+  box-shadow: 1px 1px 0px 0px #ff5c35;
+}
+
+.neo-btn-outline {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, color 0.2s ease;
+}
+
+.neo-btn-outline:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0px 0px #ff5c35;
+  border-color: #ff5c35;
+  color: #ff5c35;
+}
+
+.neo-btn-outline:active {
+  transform: translate(0, 0);
+  box-shadow: 1px 1px 0px 0px #ff5c35;
+}
+
+/* Card hover with sharp shadow and crisp border */
+.neo-card-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neo-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: #ff5c35;
+  box-shadow: 0 6px 18px -4px rgba(255, 92, 53, 0.2);
+}
+
+/* Technical Corner Markers */
+.cyber-corner {
+  position: relative;
+}
+
+.cyber-corner::before {
+  content: "+";
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  font-family: monospace;
+  font-size: 11px;
+  color: #382019;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.cyber-corner::after {
+  content: "+";
+  position: absolute;
+  bottom: -7px;
+  right: -5px;
+  font-family: monospace;
+  font-size: 11px;
+  color: #382019;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.cyber-corner:hover::before,
+.cyber-corner:hover::after {
+  color: #ff5c35;
+}
+
+/* ==========================================================================
+   Accessibility: prefers-reduced-motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-fade,
+  .reveal-scale,
+  .reveal-slide-left,
+  .reveal-slide-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animate-neon-pulse,
+  .animate-status-beacon,
+  .animate-dash-flow,
+  .animate-navbar-marquee {
+    animation: none !important;
+  }
+}

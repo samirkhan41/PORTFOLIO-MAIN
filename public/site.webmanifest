@@ -1,0 +1,21 @@
+{
+  "name": "Samir Khan | Full Stack & MERN Stack Developer",
+  "short_name": "Samir Khan",
+  "description": "Portfolio of Samir Khan, Full Stack & MERN Stack Developer building modern web applications with React, Node.js, Express, and MongoDB.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080504",
+  "theme_color": "#ffb035",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

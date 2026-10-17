@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://samirk.site/</loc>
+    <loc>https://www.samirk.site/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://samirk.site/images/frontsamir.png</image:loc>
+      <image:loc>https://www.samirk.site/images/frontsamir.png</image:loc>
       <image:title>Samir Khan - Full Stack &amp; MERN Stack Developer</image:title>
       <image:caption>Samir Khan professional portfolio hero portrait</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://samirk.site/images/heroImage.png</image:loc>
+     <image:loc>https://www.samirk.site/images/heroImage.png</image:loc>
       <image:title>Samir Khan Developer Workstation</image:title>
       <image:caption>Full Stack developer workstation setup with dual monitors and code editor</image:caption>
     </image:image>

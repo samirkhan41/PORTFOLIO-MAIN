@@ -6,4 +6,4 @@ Allow: /
 Disallow: /dist/
 
 # XML Sitemap
-Sitemap: https://samirk.site/sitemap.xml
+Sitemap: https://www.samirk.site/sitemap.xml

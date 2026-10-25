@@ -1,16 +1,106 @@
-# React + Vite
+# Samir Khan | Full Stack Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal developer portfolio built to showcase my technical skills, projects, experience, and journey as a Full Stack Developer.
 
-Currently, two official plugins are available:
+🌐 **Live Website:** https://www.samirk.site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+This repository contains the source code for my personal portfolio website. It highlights my development projects, technical expertise, and experience building modern web applications.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Responsive portfolio website
+- Personal introduction and developer profile
+- Projects showcase
+- Technical skills and experience
+- Contact and social links
+- SEO metadata and sitemap
+- HTTPS-enabled deployment
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- **Frontend:** React.js, JavaScript, HTML5
+- **Styling:** Tailwind CSS
+- **Build Tool:** Vite
+- **Linting:** ESLint
+- **Deployment:** Vercel
+- **Version Control:** Git and GitHub
+
+## Featured Project
+
+### Teesx — Clothing Website
+
+A clothing website project focused on a modern shopping experience.
+
+🔗 **Project:** https://startup-copy-2-frontend.onrender.com/
+
+Explore my live portfolio for more projects and development work.
+
+## Run Locally
+
+### Prerequisites
+
+- Node.js
+- npm
+- Git
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/samirkhan41/PORTFOLIO-MAIN.git
+```
+
+Move into the project directory:
+
+```bash
+cd PORTFOLIO-MAIN
+```
+
+If the `package.json` file is inside the `frontend` directory, run:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## Available Scripts
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```
+
+## SEO and Deployment
+
+The portfolio is deployed using Vercel and uses a custom domain.
+
+- **Website:** https://www.samirk.site/
+- **Sitemap:** https://www.samirk.site/sitemap.xml
+- **Robots:** https://www.samirk.site/robots.txt
+
+Google Search Console is used to monitor indexing and search performance.
+
+## Connect
+
+- **Portfolio:** https://www.samirk.site/
+- **GitHub:** https://github.com/samirkhan41
+
+## License
+
+This repository contains the source code for my personal portfolio website.

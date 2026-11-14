@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
@@ -8,50 +9,50 @@ const allProjects = [
     name: "TEESX",
     category: "ECOMMERCE",
     description:
-      "Modern ecommerce clothing web app with catalog filtering, cart state, and Razorpay payment gateway integration.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Razorpay"],
-    live: "https://startup-copy-2-frontend.onrender.com/",
+      "Engineered a complete e-commerce platform with secure authentication, product management, cart and order workflows. Integrated Razorpay payment gateway to streamline checkout and online transaction processing.",
+    tech: ["MERN Stack", "JWT", "Razorpay", "Tailwind CSS"],
+    live: "",
     code: "https://github.com/samirkhan41/StartUp-copy-2",
   },
   {
     number: "02",
-    name: "CODESPHERE",
-    category: "COMMUNITY",
-    description:
-      "Full-stack university coding club portal for organizing hackathons, publishing events, and project showcases.",
-    tech: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
-    live: " https://tulascodesphere.vercel.app/",
-    code: "https://github.com/samirkhan41/CodeSphereWebsite",
-  },
-  {
-    number: "03",
-    name: "AI INTERVIEW",
-    category: "AI INTERVIEW",
-    description:
-      "An all-in-one platform designed to help students and job seekers prepare for interviews, improve their resumes, build professional portfolios, and access study materials from a single place.",
-    tech: ["React", "Express", "MongoDB", "Node.js"],
-    live: "https://github.com/samirkhan41",
-    code: "https://github.com/samirkhan41/virtual-interview",
-  },
-  {
-    number: "04",
-    name: "RESUME BUILDER",
-    category: "RESUME BUILDER",
-    description:
-      "A modern, responsive, and easy-to-use web application for creating professional resumes quickly and efficiently",
-    tech: ["React", "Node.js", "Socket.io", "Redis", "MongoDB"],
-    live: "https://github.com/samirkhan41",
-    code: "https://github.com/samirkhan41/Resume-Builder",
-  },
-  {
-    number: "05",
     name: "FOOD DELIVERY APP",
     category: "FOOD DELIVERY",
     description:
-      "A comprehensive food delivery platform built with React and Node.js, featuring intuitive ordering, real-time tracking, and efficient delivery management.",
-    tech: ["React", "Node.js", "Tailwind CSS","SOCKET.IO","MOGODB","RAZORPAY",],
-    live: "https://github.com/samirkhan41",
-    code: "https://github.com/samirkhan41",
+      "Built an end-to-end food ordering system with restaurant discovery, cart management and order processing. Implemented real-time order status synchronization and delivery tracking using WebSockets.",
+    tech: ["MERN Stack", "JWT", "WebSockets", "REST APIs"],
+    live: "",
+    code: "https://github.com/samirkhan41/FoodFlow-",
+  },
+  {
+    number: "03",
+    name: "LINKEDIN CLONE",
+    category: "SOCIAL NETWORKING",
+    description:
+      "Developed a professional networking platform with dynamic user profiles and content publishing. Implemented interactive social features for post creation and user engagement.",
+    tech: ["MERN Stack", "JWT", "REST APIs", "Cloudinary"],
+    live: "",
+    code: "https://github.com/samirkhan41/Linkedin-Clone",
+  },
+  {
+    number: "04",
+    name: "INSTAGRAM CLONE",
+    category: "SOCIAL MEDIA",
+    description:
+      "Built an image-sharing platform with user profiles, media uploads and dynamic post management. Integrated Cloudinary for cloud-based image storage and implemented likes and comments.",
+    tech: ["MERN Stack", "JWT", "Cloudinary", "REST APIs"],
+    live: "",
+    code: "https://github.com/samirkhan41/InstaConnect/",
+  },
+  {
+    number: "05",
+    name: "AI HEALTHCARE ROBOT",
+    category: "IOT / HEALTHCARE",
+    description:
+      "Designed an IoT-based telepresence robot with mecanum-wheel mobility for remote movement and assisted patient interaction. Integrated ultrasonic obstacle detection, MAX30102 sensor monitoring and real-time device communication.",
+    tech: ["ESP32", "Embedded C/C++", "Python", "FastAPI", "SQLite", "WebSockets"],
+    live: "",
+    code: "https://github.com/samirkhan41/MediBot",
   },
   {
     number: "06",
@@ -60,8 +61,8 @@ const allProjects = [
     description:
       "DevForge — An AI-powered coding platform that generates code, builds projects, fixes bugs, and automates development workflows",
     tech: ["React", "TypeScript", "Express", "PostgreSQL", "Prisma"],
-    live: "https://github.com/samirkhan41",
-    code: "https://github.com/samirkhan41",
+    live: "",
+    code: "https://github.com/samirkhan41/DevForge",
   },
 ];
 
@@ -69,7 +70,9 @@ export default function Projects() {
   const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.1 });
   const [showAll, setShowAll] = useState(false);
 
-  const displayedProjects = showAll ? allProjects : allProjects.slice(0, 3);
+  const displayedProjects = showAll
+    ? allProjects
+    : allProjects.slice(0, 3);
 
   return (
     <section
@@ -81,11 +84,11 @@ export default function Projects() {
         {/* Section Header */}
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-           
-
             <h2
               className={`text-3xl font-bold tracking-tight sm:text-5xl transition-all duration-700 delay-75 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
               }`}
             >
               PROJECTS<span className="text-[#ff5c35]">.</span>
@@ -94,7 +97,11 @@ export default function Projects() {
 
           <div className="flex items-center gap-4">
             <span className="font-mono text-[11px] text-gray-400">
-              SHOWING <span className="font-bold text-neon">{displayedProjects.length}</span> / {allProjects.length}
+              SHOWING{" "}
+              <span className="font-bold text-neon">
+                {displayedProjects.length}
+              </span>{" "}
+              / {allProjects.length}
             </span>
 
             <a
@@ -103,7 +110,9 @@ export default function Projects() {
               rel="noopener noreferrer"
               aria-label="View Samir Khan's GitHub repositories (opens in new tab)"
               className={`group flex items-center gap-1 font-mono text-xs text-gray-300 transition-all duration-500 delay-150 hover:text-[#ff5c35] ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
             >
               <span>GITHUB</span>
@@ -131,19 +140,27 @@ export default function Projects() {
                     ? "hover:border-[#ff5c35] hover:shadow-[0_8px_24px_rgba(255,92,53,0.18)]"
                     : "hover:border-neon hover:shadow-[0_8px_24px_rgba(255,176,53,0.2)]"
                 } hover:-translate-y-1.5 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
                 }`}
               >
                 {/* Card Header Bar */}
                 <div className="flex items-center justify-between border-b border-line bg-ink/70 px-4 py-2 font-mono text-[10px]">
-                  <span className={`font-semibold tracking-wider ${isOrange ? "text-[#ff5c35]" : "text-neon"}`}>
+                  <span
+                    className={`font-semibold tracking-wider ${
+                      isOrange ? "text-[#ff5c35]" : "text-neon"
+                    }`}
+                  >
                     {project.number} // {project.category}
                   </span>
 
                   <ArrowUpRight
                     size={13}
                     className={`text-gray-500 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
-                      isOrange ? "group-hover:text-[#ff5c35]" : "group-hover:text-neon"
+                      isOrange
+                        ? "group-hover:text-[#ff5c35]"
+                        : "group-hover:text-neon"
                     }`}
                   />
                 </div>
@@ -151,9 +168,13 @@ export default function Projects() {
                 {/* Card Middle Content */}
                 <div className="flex flex-1 flex-col justify-between p-4 sm:p-5">
                   <div>
-                    <h3 className={`text-base font-bold tracking-tight text-white transition-colors duration-200 ${
-                      isOrange ? "group-hover:text-[#ff5c35]" : "group-hover:text-neon"
-                    } sm:text-lg`}>
+                    <h3
+                      className={`text-base font-bold tracking-tight text-white transition-colors duration-200 ${
+                        isOrange
+                          ? "group-hover:text-[#ff5c35]"
+                          : "group-hover:text-neon"
+                      } sm:text-lg`}
+                    >
                       {project.name}
                     </h3>
 
@@ -172,6 +193,7 @@ export default function Projects() {
                         {technology}
                       </span>
                     ))}
+
                     {project.tech.length > 4 && (
                       <span className="border border-line/60 bg-ink/50 px-1.5 py-0.5 font-mono text-[9px] text-gray-400">
                         +{project.tech.length - 4}
@@ -192,27 +214,31 @@ export default function Projects() {
                       <ArrowUpRight size={11} />
                     </a>
 
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.name} live demo application (opens in new tab)`}
-                      className="flex items-center gap-1 font-semibold text-neon transition-colors duration-200 hover:text-[#ffd166]"
-                    >
-                      <span>LIVE DEMO</span>
-                      <ArrowUpRight size={11} />
-                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.name} live demo application (opens in new tab)`}
+                        className="flex items-center gap-1 font-semibold text-neon transition-colors duration-200 hover:text-[#ffd166]"
+                      >
+                        <span>LIVE DEMO</span>
+                        <ArrowUpRight size={11} />
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </article>
-          );
-        })}
+              </article>
+            );
+          })}
         </div>
 
         {/* View More Projects Action Controls */}
         <div
           className={`mt-10 flex flex-wrap items-center justify-center gap-4 transition-all duration-700 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4"
           }`}
         >
           <button
@@ -220,11 +246,20 @@ export default function Projects() {
             onClick={() => setShowAll((prev) => !prev)}
             className="neo-btn-outline group flex items-center gap-2 border border-neon bg-panel px-6 py-3 font-mono text-xs font-bold text-neon hover:bg-neon hover:text-ink shadow-[0_4px_16px_rgba(255,176,53,0.2)] transition-all duration-200"
           >
-            <span>{showAll ? "SHOW LESS" : "VIEW MORE PROJECTS (+3)"}</span>
+            <span>
+              {showAll ? "SHOW LESS" : "VIEW MORE PROJECTS (+3)"}
+            </span>
+
             {showAll ? (
-              <ChevronUp size={14} className="transition-transform duration-200 group-hover:-translate-y-0.5" />
+              <ChevronUp
+                size={14}
+                className="transition-transform duration-200 group-hover:-translate-y-0.5"
+              />
             ) : (
-              <ChevronDown size={14} className="transition-transform duration-200 group-hover:translate-y-0.5" />
+              <ChevronDown
+                size={14}
+                className="transition-transform duration-200 group-hover:translate-y-0.5"
+              />
             )}
           </button>
 

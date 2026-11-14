@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, Compass, ChevronDown } from "lucide-react";
 
@@ -16,16 +17,18 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [quickNavOpen, setQuickNavOpen] = useState(false);
-  const navDropdownRef = useRef(null);
 
-  // Scroll listener for sticky navbar styling
+  const navDropdownRef = useRef(null);
+  const navButtonRef = useRef(null);
+
+  // Scroll listener and active section spy
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Active section spy using IntersectionObserver
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -51,18 +54,30 @@ export default function Navbar() {
     };
   }, []);
 
-  // Close QuickNav dropdown on outside click
+  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (navDropdownRef.current && !navDropdownRef.current.contains(e.target)) {
+      if (
+        navDropdownRef.current &&
+        !navDropdownRef.current.contains(e.target) &&
+        navButtonRef.current &&
+        !navButtonRef.current.contains(e.target)
+      ) {
         setQuickNavOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, []);
 
-  const activeObj = sections.find((s) => s.id === activeSection) || sections[0];
+  const activeObj =
+    sections.find((s) => s.id === activeSection) || sections[0];
 
   return (
     <header
@@ -73,22 +88,25 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex h-13 max-w-[1600px] items-center justify-between gap-3 border-x border-line px-3.5 sm:px-6">
+
         {/* Brand / Logo */}
         <a
           href="#home"
           aria-label="Samir Khan portfolio homepage"
           className="group flex shrink-0 items-center gap-1 text-sm sm:text-base font-bold tracking-tight transition-transform duration-200 hover:scale-[1.02]"
         >
-          <span>SAMIR</span>
-          <span className="text-[#ff5c35] font-black">.K</span>
+          <span>SAMIRK</span>
+          <span className="text-[#ff5c35] font-black">.SITE</span>
           <span className="h-1.5 w-1.5 rounded-full bg-neon transition-transform duration-300 group-hover:scale-150 group-hover:shadow-[0_0_8px_#ffb035]" />
         </a>
 
-        {/* Right Controls: Active Section Pill (Left of Let's Talk) + CTA */}
+        {/* Right Controls */}
         <div className="flex items-center gap-2 sm:gap-2.5">
-          {/* Interactive Active Section Capsule with Quick Jump Dropdown */}
-          <div className="relative" ref={navDropdownRef}>
+
+          {/* Quick Navigation */}
+          <div className="relative">
             <button
+              ref={navButtonRef}
               type="button"
               onClick={() => setQuickNavOpen((prev) => !prev)}
               aria-expanded={quickNavOpen}
@@ -99,8 +117,13 @@ export default function Navbar() {
                 size={12}
                 className="text-neon transition-transform duration-300 group-hover:rotate-45"
               />
-              <span className="font-semibold text-[#ff5c35]">{activeObj.num}</span>
+
+              <span className="font-semibold text-[#ff5c35]">
+                {activeObj.num}
+              </span>
+
               <span>// {activeObj.label}</span>
+
               <ChevronDown
                 size={11}
                 className={`text-gray-400 transition-transform duration-200 ${
@@ -109,24 +132,35 @@ export default function Navbar() {
               />
             </button>
 
-            {/* Quick-Jump HUD Modal Dropdown */}
+            {/* Compact Scrollable Dropdown */}
             {quickNavOpen && (
-              <div className="cyber-corner absolute right-0 top-full mt-1.5 w-64 border border-dotted border-neon/80 bg-ink p-2.5 shadow-[0_12px_36px_rgba(0,0,0,0.85)] backdrop-blur-xl animate-fade-in z-50">
-                <div className="mb-1.5 flex items-center justify-between border-b border-dotted border-line pb-1.5 font-mono text-[9px]">
-                  <span className="text-[#ff5c35] font-bold">// QUICK RADAR JUMP</span>
-                  <span className="text-gray-500">08 SECTIONS</span>
+              <div
+                ref={navDropdownRef}
+                className="cyber-corner fixed right-3 sm:right-6 top-[58px] z-[60] w-[210px] max-h-[45vh] overflow-y-auto overflow-x-hidden overscroll-contain border border-dotted border-neon/80 bg-ink p-1.5 shadow-[0_12px_36px_rgba(0,0,0,0.85)] backdrop-blur-xl animate-fade-in"
+              >
+                {/* Dropdown Header */}
+                <div className="mb-1 flex items-center justify-between border-b border-dotted border-line pb-1 font-mono text-[8px]">
+                  <span className="text-[#ff5c35] font-bold">
+                    // QUICK RADAR JUMP
+                  </span>
+
+                  <span className="text-gray-500">
+                    08 SECTIONS
+                  </span>
                 </div>
 
+                {/* Section Links */}
                 <div className="flex flex-col gap-0.5">
                   {sections.map((sec) => {
                     const isActive = activeSection === sec.id;
                     const isHire = sec.id === "hire";
+
                     return (
                       <a
                         key={sec.id}
                         href={`#${sec.id}`}
                         onClick={() => setQuickNavOpen(false)}
-                        className={`group flex items-center justify-between border border-dotted border-transparent px-2 py-1.5 font-mono text-[11px] transition-all duration-150 ${
+                        className={`group flex shrink-0 items-center justify-between gap-1 border border-dotted border-transparent px-1.5 py-1 font-mono text-[9px] transition-all duration-150 ${
                           isActive
                             ? "border-neon/60 bg-neon/10 font-bold text-neon"
                             : isHire
@@ -134,17 +168,29 @@ export default function Navbar() {
                             : "text-gray-300 hover:border-line hover:bg-panel hover:text-white"
                         }`}
                       >
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1">
                           <span
-                            className={`text-[9px] ${
-                              isActive ? "text-neon" : isHire ? "text-[#ff5c35]" : "text-gray-500"
+                            className={`text-[8px] ${
+                              isActive
+                                ? "text-neon"
+                                : isHire
+                                ? "text-[#ff5c35]"
+                                : "text-gray-500"
                             }`}
                           >
                             [{sec.num}]
                           </span>
+
                           <span>{sec.label}</span>
                         </div>
-                        <span className={`text-[9px] ${isHire ? "text-[#ff5c35]/80 font-bold" : "text-gray-500 group-hover:text-gray-400"}`}>
+
+                        <span
+                          className={`text-[8px] text-right ${
+                            isHire
+                              ? "text-[#ff5c35]/80 font-bold"
+                              : "text-gray-500 group-hover:text-gray-400"
+                          }`}
+                        >
                           {sec.desc}
                         </span>
                       </a>
@@ -161,6 +207,7 @@ export default function Navbar() {
             className="neo-btn-primary flex items-center gap-1 bg-neon px-2.5 py-1 sm:px-3 sm:py-1.5 font-mono text-[10px] sm:text-[11px] font-bold text-ink"
           >
             <span>LET'S TALK</span>
+
             <ArrowUpRight
               size={12}
               className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

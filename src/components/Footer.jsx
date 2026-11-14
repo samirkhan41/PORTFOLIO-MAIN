@@ -31,8 +31,8 @@ export default function Footer() {
         aria-label="Samir Khan portfolio home"
         className="group flex items-center gap-1.5 text-lg font-bold transition-transform duration-200 hover:scale-[1.02]"
       >
-        <span>SAMIR</span>
-        <span className="text-[#ff5c35] font-black">.K</span>
+        <span>SAMIRK</span>
+        <span className="text-[#ff5c35] font-black">.SITE</span>
         <span className="h-2 w-2 rounded-full bg-neon transition-transform duration-300 group-hover:scale-150 group-hover:shadow-[0_0_8px_#ffb035]" />
       </a>
 

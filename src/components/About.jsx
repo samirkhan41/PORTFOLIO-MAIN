@@ -108,7 +108,7 @@ export default function About() {
   const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.1 });
 
   // Animated statistics
-  const countProjects = useCounterAnimation(3, 1000, isVisible);
+  const countProjects = useCounterAnimation(16, 1000, isVisible);
   const countExperience = useCounterAnimation(3, 1000, isVisible);
   const countSkills = useCounterAnimation(15, 1200, isVisible);
 
@@ -149,7 +149,7 @@ export default function About() {
                 }`}
             >
               <StatItem
-                value={`0${countProjects}`}
+                value={countProjects}
                 suffix="+"
                 label="Projects"
                 color="neon"

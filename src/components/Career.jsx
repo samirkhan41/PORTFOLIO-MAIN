@@ -1,16 +1,19 @@
+
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const experiences = [
   {
-    level: "LEVEL 03",
-    date: "DEC 2025 — MAR 2026",
+    level: "LEVEL 04",
+    date: "NOV 2026 — PRESENT",
     role: "Full Stack Developer Intern",
-    company: "Amdox Technologies",
+    company: "Ricoz",
     description:
-      "Worked on web applications using React, TypeScript and backend services.",
-    tags: ["React", "TypeScript", "Docker", "AWS"],
+      "Currently working on VendorShield, an enterprise-grade SaaS platform for vendor risk management, security assessments and data privacy compliance. Developing full-stack modules using Next.js, Node.js, Express.js and MongoDB.",
+    tags: ["Next.js", "Node.js", "Express.js", "MongoDB", "GDPR", "DPDP Act"],
+    focus:
+      "SaaS Development, Vendor Risk Management, Next.js, REST APIs, MongoDB and Data Privacy Compliance.",
   },
   {
     level: "LEVEL 02",
@@ -19,7 +22,20 @@ const experiences = [
     company: "Zidio Development",
     description:
       "Contributed to client projects and scalable web solutions.",
-    tags: ["React", "Node.js", "Docker", "AWS"],
+    tags: ["React", "Node.js", "Express.js", "MongoDB", "REST APIs", "JWT", "Docker", "AWS"],
+    focus:
+      "MERN Stack Development, E-commerce Features, Backend API Development, Authentication, Database Management and Cloud Deployment.",
+  },
+  {
+    level: "LEVEL 03",
+    date: "DEC 2025 — MAR 2026",
+    role: "Full Stack Developer Intern",
+    company: "Amdox Technologies",
+    description:
+      "Worked on web applications using React, TypeScript and backend services.",
+    tags: ["React", "TypeScript", "JavaScript", "Node.js", "Express.js", "Docker", "AWS", "MongoDB", "REST APIs", "Git", "GitHub"],
+    focus:
+      "React Development, TypeScript, Responsive UI, Frontend Architecture, API Integration and Scalable Web Applications.",
   },
   {
     level: "LEVEL 01",
@@ -28,7 +44,9 @@ const experiences = [
     company: "CodeSphere Coding Club",
     description:
       "Contributing to the club website and helping organize Sprint-X Hackathon.",
-    tags: ["React", "Node.js", "Tailwind CSS"],
+    tags: ["React", "Next.js", "Node.js", "Express.js", "Tailwind CSS", "MongoDB", "JavaScript"],
+    focus:
+      "Technical Leadership, Website Development, Team Collaboration, Mentoring Students and Hackathon Organization.",
   },
 ];
 
@@ -44,8 +62,6 @@ export default function Career() {
     >
       {/* Section Header Column */}
       <div className="p-5 sm:p-7 md:col-span-3">
-      
-
         <h2
           className={`text-4xl font-bold leading-none tracking-tight transition-all duration-700 delay-75 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -67,7 +83,7 @@ export default function Career() {
 
       {/* Timeline Entries Column */}
       <div className="relative px-5 pb-5 md:col-span-9 md:py-5">
-        {/* Animated Vertical Timeline Line with Orange-to-Green Gradient */}
+        {/* Animated Vertical Timeline Line */}
         <div
           className={`absolute bottom-8 left-[26px] top-8 w-px bg-gradient-to-b from-[#ff5c35] via-neon to-line origin-top transition-all duration-1000 ease-out md:left-[30px] ${
             isVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"
@@ -84,7 +100,9 @@ export default function Career() {
                 transitionDelay: `${200 + index * 120}ms`,
               }}
               className={`group relative grid gap-3 border-b border-line py-6 pl-7 last:border-0 sm:grid-cols-[90px_1fr] md:pl-12 transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
               }`}
             >
               {/* Glowing Timeline Marker Node */}
@@ -119,61 +137,71 @@ export default function Career() {
                   {job.role}
                 </h3>
 
-                <p className={`mt-1 text-sm font-semibold ${isOrange ? "text-[#ff5c35]" : "text-neon"}`}>
+                <p
+                  className={`mt-1 text-sm font-semibold ${
+                    isOrange ? "text-[#ff5c35]" : "text-neon"
+                  }`}
+                >
                   {job.company}
                 </p>
 
                 <p className="mt-2 font-mono text-[11px] leading-5 text-gray-400">
                   {job.description}
-              </p>
+                </p>
 
-              {/* Technology Tags */}
-              <div className="mt-3 flex flex-wrap gap-2">
-                {job.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="border border-line bg-ink/60 px-2 py-1 font-mono text-[10px] text-gray-300 transition-colors duration-200 hover:border-neon hover:text-neon"
-                  >
-                    {tag}
+                {/* Technology Tags */}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {job.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="border border-line bg-ink/60 px-2 py-1 font-mono text-[10px] text-gray-300 transition-colors duration-200 hover:border-neon hover:text-neon"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Expand / Collapse Button */}
+                <button
+                  onClick={() =>
+                    setExpanded(
+                      expanded === job.level ? "" : job.level
+                    )
+                  }
+                  className="neo-btn-outline mt-3.5 inline-flex items-center gap-2 border border-[#ffb035]/60 px-3 py-1.5 font-mono text-[10px] text-neon hover:bg-neon hover:text-ink"
+                  aria-expanded={expanded === job.level}
+                >
+                  <span>
+                    {expanded === job.level ? "LESS" : "MORE"}
                   </span>
-                ))}
-              </div>
 
-              {/* Expand / Collapse Button */}
-              <button
-                onClick={() =>
-                  setExpanded(expanded === job.level ? "" : job.level)
-                }
-                className="neo-btn-outline mt-3.5 inline-flex items-center gap-2 border border-[#ffb035]/60 px-3 py-1.5 font-mono text-[10px] text-neon hover:bg-neon hover:text-ink"
-                aria-expanded={expanded === job.level}
-              >
-                <span>{expanded === job.level ? "LESS" : "MORE"}</span>
-                <ArrowUpRight
-                  size={12}
-                  className={`transition-transform duration-300 ${
-                    expanded === job.level ? "rotate-90" : ""
+                  <ArrowUpRight
+                    size={12}
+                    className={`transition-transform duration-300 ${
+                      expanded === job.level ? "rotate-90" : ""
+                    }`}
+                  />
+                </button>
+
+                {/* Collapsible Details */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    expanded === job.level
+                      ? "mt-3 max-h-40 opacity-100"
+                      : "max-h-0 opacity-0"
                   }`}
-                />
-              </button>
-
-              {/* Collapsible Details */}
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  expanded === job.level
-                    ? "mt-3 max-h-40 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="border-l-2 border-neon bg-panel p-3 font-mono text-[11px] leading-5 text-gray-300 shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
-                  <span className="text-neon font-bold">&gt; FOCUS:</span>{" "}
-                  Frontend implementation, API integration, collaboration, Git
-                  workflows and practical development experience.
+                >
+                  <div className="border-l-2 border-neon bg-panel p-3 font-mono text-[11px] leading-5 text-gray-300 shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+                    <span className="text-neon font-bold">
+                      &gt; FOCUS:
+                    </span>{" "}
+                    {job.focus}
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
-        );
-      })}
+            </article>
+          );
+        })}
       </div>
     </section>
   );

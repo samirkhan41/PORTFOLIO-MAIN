@@ -232,7 +232,7 @@ export default function Hero() {
             <div className="cyber-corner border border-dotted border-line bg-panel shadow-[0_6px_28px_rgba(0,0,0,0.6)] transition-all duration-300 hover:border-line/90">
               <div className="flex items-center gap-2 border-b border-dotted border-line px-4 py-3.5 font-mono text-xs text-neon">
                 <span aria-hidden="true" className="inline-block text-sm animate-pulse">▣</span>
-                <span className="font-semibold tracking-wide">samir@portfolio:~$ {typedCommand}</span>
+                <span className="font-semibold tracking-wide">samirk.site:~$ {typedCommand}</span>
                 {typedCommand.length < fullCommand.length && (
                   <span className="inline-block font-bold animate-terminal-blink">_</span>
                 )}
@@ -267,7 +267,7 @@ export default function Hero() {
 
                 {visibleLinesCount >= terminalLines.length && (
                   <div className="terminal-line-item pt-2 text-neon transition-all duration-200 font-semibold cursor-default">
-                    samir@portfolio:~$ <span className="inline-block animate-terminal-blink">_</span>
+                    samirk.site:~$ <span className="inline-block animate-terminal-blink">_</span>
                   </div>
                 )}
               </div>
@@ -278,7 +278,7 @@ export default function Hero() {
               href="https://leetcode.com/u/samirkhan07/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View Samir Khan's 100+ LeetCode solved problems profile (opens in new tab)"
+              aria-label="View Samir Khan's 150+ LeetCode solved problems profile (opens in new tab)"
               className="cyber-corner group flex flex-col justify-between border border-dotted border-line bg-panel p-4 sm:p-5 transition-all duration-300 hover:border-neon hover:shadow-[0_4px_20px_rgba(255,176,53,0.15)] hover:-translate-y-0.5"
             >
               <div className="flex items-center justify-between font-mono text-[10px]">
@@ -287,12 +287,12 @@ export default function Hero() {
                   <span>// LEETCODE</span>
                 </div>
                 <span className="border border-dotted border-neon/60 bg-ink px-2 py-0.5 text-[9px] font-bold text-neon transition-colors group-hover:border-neon group-hover:bg-neon group-hover:text-ink">
-                  100+ SOLVED ↗
+                  150+ SOLVED ↗
                 </span>
               </div>
 
               <div className="my-2 flex items-baseline gap-2">
-                <span className="font-mono text-3xl font-black text-neon">100+</span>
+                <span className="font-mono text-3xl font-black text-neon">150+</span>
                 <span className="font-mono text-xs font-semibold text-gray-200">Problems Solved</span>
               </div>
 
